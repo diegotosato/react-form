@@ -33,10 +33,15 @@ function App() {
 
   //destrutturizzazione dell'array per interagire dinamicamente per creare la lista
   const [titles, setTitles] = useState(titleArticles)
+
+  //array vuoto per immagazzinare il nuovo titolo che inserisce l'utente
   const [newTitle, setNewTitle] = useState('')
 
 
-
+  //funzione per gestire il submite al form
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
 
 
 
@@ -56,7 +61,7 @@ function App() {
 
 
         {/* campo Form per inserire un nuovo titolo */}
-        <form>
+        <form onSubmit={handleSubmit}>
 
           <div className="mb-3 d-flex">
             <input type="text" className="form-control" name="new-title" id="new-title"
