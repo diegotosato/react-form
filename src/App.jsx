@@ -1,4 +1,5 @@
 import { useState } from "react"
+import ListItem from "./components/ListItem"
 
 function App() {
 
@@ -33,13 +34,13 @@ function App() {
   //array vuoto per immagazzinare il nuovo titolo che inserisce l'utente
   const [newTitle, setNewTitle] = useState('')
 
+  //variabile error per far comparire un messaggio quando la lista è vuota
+  const [error, setError] = useState(null)
 
 
-  //variabile per trasformare l'input in un oggetto
-  let addTitle = {
-    id: titles[titles.length - 1].id + 1,
-    title: newTitle
-  }
+
+
+
 
 
   //funzione per gestire il submite al form
@@ -49,13 +50,18 @@ function App() {
     //quando faccio submit e l'input è vuoto, faccio comparire un alert e resetto il campo
     if (newTitle.length === 0) {
 
-      alert('Il campo è vuoto')
       setNewTitle('')
+      setError(true)
 
     } else {
-
-
       //altrimenti svolgo tutta la mia funzione
+
+
+      //variabile per trasformare l'input in un oggetto
+      let addTitle = {
+        id: titles[titles.length - 1].id + 1,
+        title: newTitle
+      }
 
       //nuovo array dove riprendo l'array di partenza e ci aggiungo alla fine il mio nuovo oggetto
       const uploadTitles = [...titles, addTitle]
@@ -81,6 +87,8 @@ function App() {
     const uploadTitles = titles.filter((title, index) => index !== id)
     setTitles(uploadTitles)
 
+
+
   }
 
 
@@ -102,58 +110,47 @@ function App() {
         {/* campo Form per inserire un nuovo titolo */}
         <form onSubmit={handleSubmit}>
 
-          <div className="mb-3 d-flex">
+          <div className="d-flex">
             <input type="text" className="form-control" name="new-title" id="new-title"
               aria-describedby="helpId" placeholder="Inserisci un nuovo titolo" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
             <button className="btn btn-success ms-3" type="submit">Aggiungi</button>
           </div>
+          {
+            error && <div class="alert alert-danger mt-4" role="alert">
+              Inserisci un titolo
+            </div>
+          }
 
         </form>
 
 
+        {
+          titles.length > 0 &&
+          // Card che uso come contenitore dei titoli
+          <div className="card mt-4">
+
+            {/* creo la lista */}
+            <ul className="list-group">
+
+              {/* mapping dell'array per creare dinamicamente la lista */}
+              {
+                titles.map((title, index) => (
+                  <ListItem key={title.id} title={title} index={index} handle={() => handleTrash(index)} />
+                ))
+              }
+
+            </ul>
+          </div>
+        }
 
 
 
 
+        {
+          titles.length === 0 && <div className="mt-3">Nothing to do today</div>
+        }
 
-
-
-
-
-
-
-
-
-        {/* Card che uso come contenitore dei titoli */}
-        <div className="card">
-
-          {/* creo la lista */}
-          <ul className="list-group">
-
-            {/* mapping dell'array per creare dinamicamente la lista */}
-            {
-              titles.map((title, index) => (
-                <li key={title.id} className="list-group-item d-flex justify-content-between align-items-center">
-
-                  {title.title}
-
-                  {/* Bottone per eliminare la riga */}
-                  <button className="btn btn-danger" onClick={() => handleTrash(index)}>
-                    <i className="bi bi-trash3"></i>
-                  </button>
-
-                </li>
-
-              ))
-            }
-
-          </ul>
-
-
-        </div>
-
-
-      </div>
+      </div >
     </>
   )
 }
