@@ -18,29 +18,34 @@ function App() {
 
 
   //array degli articoli
-  const titleArticles = [
-    { "id": 1, title: "Benvenuto" },
-    { "id": 2, title: "Novità Settimana" },
-    { "id": 3, title: "Guide React" },
-    { "id": 4, title: "Trucchi CSS" },
-    { "id": 5, title: "JS per Iniziare" },
-    { "id": 6, title: "Debug Comune" },
-    { "id": 7, title: "Errori da Evitare" },
-    { "id": 8, title: "Consigli UI/UX" },
-    { "id": 9, title: "Setup Progetto" },
-    { "id": 10, title: "Note di Changelog" }
+  const initialTitles = [
+    { id: 1, title: "Benvenuto" },
+    { id: 2, title: "Novità Settimana" },
+    { id: 3, title: "Guide React" },
+    { id: 4, title: "Trucchi CSS" }
   ]
 
   //destrutturizzazione dell'array per interagire dinamicamente per creare la lista
-  const [titles, setTitles] = useState(titleArticles)
+  const [titles, setTitles] = useState(initialTitles)
 
   //array vuoto per immagazzinare il nuovo titolo che inserisce l'utente
   const [newTitle, setNewTitle] = useState('')
 
+  //variabile per trasformare l'input in un oggetto
+  let addTitle = {
+    id: titles.length + 1,
+    title: newTitle
+  }
 
   //funzione per gestire il submite al form
   function handleSubmit(e) {
     e.preventDefault()
+
+    //nuovo array dove riprendo l'array di partenza e ci aggiungo alla fine il mio nuovo oggetto
+    const uploadTitles = [...titles, addTitle]
+    setTitles(uploadTitles)
+
+
   }
 
 
