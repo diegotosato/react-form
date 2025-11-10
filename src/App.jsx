@@ -16,6 +16,8 @@ function App() {
   Impostare il lavoro su più componenti.
   */
 
+
+  //array degli articoli
   const titleArticles = [
     { "id": 1, title: "Benvenuto" },
     { "id": 2, title: "Novità Settimana" },
@@ -29,22 +31,30 @@ function App() {
     { "id": 10, title: "Note di Changelog" }
   ]
 
-
+  //destrutturizzazione dell'array per interagire dinamicamente per creare la lista
   const [titles, setTitles] = useState(titleArticles)
 
   return (
     <>
+      {/* creo un container per titolo e lista */}
       <div className="container">
-        <h1>Worka</h1>
 
+        {/* Titolo della pagina */}
+        <h1>Titoli degli articoli</h1>
+
+        {/* Card che uso come contenitore dei titoli */}
         <div className="card">
 
-          <ul class="list-group">
+          {/* creo la lista */}
+          <ul className="list-group">
+
+            {/* mapping dell'array per creare dinamicamente la lista */}
             {
               titles.map(title => (
-                <li class="list-group-item">{title.title}</li>
+                <li key={title.id} className="list-group-item">{title.title}</li>
               ))
             }
+
           </ul>
 
 
