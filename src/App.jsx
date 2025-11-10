@@ -63,6 +63,18 @@ function App() {
   }
 
 
+  //funzione per rimuovere la riga
+  function handleTrash(id) {
+
+    //nuovo array dove vado a fare il filtraggio
+    //prendo l'array originale e faccio un filter, recupero i valori del singolo oggetto e del suo index
+    //restituisco tutto ciò che ha index diverso dal suo stesso id
+    //se Index = 1 e id = 1, restituisco tutto ciò che non soddisfa questa condizione
+    const filteredTitles = titles.filter((title, index) => index !== id)
+    setTitles(filteredTitles)
+
+  }
+
 
 
 
@@ -112,13 +124,13 @@ function App() {
 
             {/* mapping dell'array per creare dinamicamente la lista */}
             {
-              titles.map(title => (
+              titles.map((title, index) => (
                 <li key={title.id} className="list-group-item d-flex justify-content-between align-items-center">
 
                   {title.title}
 
                   {/* Bottone per eliminare la riga */}
-                  <button className="btn btn-danger">
+                  <button className="btn btn-danger" onClick={() => handleTrash(index)}>
                     <i className="bi bi-trash3"></i>
                   </button>
 
