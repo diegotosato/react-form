@@ -113,7 +113,17 @@ function App() {
             {/* mapping dell'array per creare dinamicamente la lista */}
             {
               titles.map(title => (
-                <li key={title.id} className="list-group-item">{title.title}</li>
+                <li key={title.id} className="list-group-item d-flex justify-content-between align-items-center">
+
+                  {title.title}
+
+                  {/* Bottone per eliminare la riga */}
+                  <button className="btn btn-danger">
+                    <i className="bi bi-trash3"></i>
+                  </button>
+
+                </li>
+
               ))
             }
 
