@@ -33,6 +33,15 @@ function App() {
 
   //destrutturizzazione dell'array per interagire dinamicamente per creare la lista
   const [titles, setTitles] = useState(titleArticles)
+  const [newTitle, setNewTitle] = useState('')
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -51,8 +60,8 @@ function App() {
 
           <div className="mb-3 d-flex">
             <input type="text" className="form-control" name="new-title" id="new-title"
-              aria-describedby="helpId" placeholder="Inserisci un nuovo titolo" />
-            <button className="btn btn-success ms-3">Aggiungi</button>
+              aria-describedby="helpId" placeholder="Inserisci un nuovo titolo" value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
+            <button className="btn btn-success ms-3" type="submit">Aggiungi</button>
           </div>
 
         </form>
