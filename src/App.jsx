@@ -42,6 +42,35 @@ function App() {
         {/* Titolo della pagina */}
         <h1>Titoli degli articoli</h1>
 
+
+
+
+
+        {/* campo Form per inserire un nuovo titolo */}
+        <form>
+
+          <div className="mb-3 d-flex">
+            <input type="text" className="form-control" name="new-title" id="new-title"
+              aria-describedby="helpId" placeholder="Inserisci un nuovo titolo" />
+            <button className="btn btn-success ms-3">Aggiungi</button>
+          </div>
+
+        </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {/* Card che uso come contenitore dei titoli */}
         <div className="card">
 
