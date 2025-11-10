@@ -1,4 +1,20 @@
+import { useState } from "react"
+
 function App() {
+
+  /*
+  Creare una pagina che visualizzi una lista di articoli, mostrandone solo il titolo (per la lista usate un array di oggetti).
+
+  Milestone 2
+  Aggiungiamo in pagina un semplice form con un campo input in cui inserire il titolo di un nuovo articolo del blog.
+  Al submit del form, mostrare la lista degli articoli aggiornati.
+
+  BONUS
+
+  Aggiungere la possibilità di cancellare ciascun articolo utilizzando un'icona.
+  Implementare la funzionalità di modifica del titolo di un post.
+  Impostare il lavoro su più componenti.
+  */
 
   const titleArticles = [
     { "id": 1, title: "Benvenuto" },
@@ -13,9 +29,29 @@ function App() {
     { "id": 10, title: "Note di Changelog" }
   ]
 
+
+  const [titles, setTitles] = useState(titleArticles)
+
   return (
     <>
-      <h1>Worka</h1>
+      <div className="container">
+        <h1>Worka</h1>
+
+        <div className="card">
+
+          <ul class="list-group">
+            {
+              titles.map(title => (
+                <li class="list-group-item">{title.title}</li>
+              ))
+            }
+          </ul>
+
+
+        </div>
+
+
+      </div>
     </>
   )
 }
