@@ -16,17 +16,39 @@ function App() {
   Impostare il lavoro su più componenti.
   */
 
+  let counter = 0
+  let string = ["Benvenuto", "Novità Settimana", "Guide React", "Trucchi CSS"]
 
-  //array degli articoli
-  const initialTitles = [
-    { id: 1, title: "Benvenuto" },
-    { id: 2, title: "Novità Settimana" },
-    { id: 3, title: "Guide React" },
-    { id: 4, title: "Trucchi CSS" }
-  ]
+  const emptyArray = []
+
+
+  for (let i = 0; i < string.length; i++) {
+    let object = {
+      id: counter++,
+      title: string[i]
+    }
+    emptyArray.push(object)
+  }
+
+
+
+
+
+
+
+
+
+
+  // //array degli articoli
+  // const initialTitles = [
+  //   { id: 1, title: "Benvenuto" },
+  //   { id: 2, title: "Novità Settimana" },
+  //   { id: 3, title: "Guide React" },
+  //   { id: 4, title: "Trucchi CSS" }
+  // ]
 
   //destrutturizzazione dell'array per interagire dinamicamente per creare la lista
-  const [titles, setTitles] = useState(initialTitles)
+  const [titles, setTitles] = useState(emptyArray)
 
   //array vuoto per immagazzinare il nuovo titolo che inserisce l'utente
   const [newTitle, setNewTitle] = useState('')
@@ -36,6 +58,7 @@ function App() {
     id: titles.length + 1,
     title: newTitle
   }
+
 
   //funzione per gestire il submite al form
   function handleSubmit(e) {
@@ -49,6 +72,7 @@ function App() {
 
     } else {
 
+
       //altrimenti svolgo tutta la mia funzione
 
       //nuovo array dove riprendo l'array di partenza e ci aggiungo alla fine il mio nuovo oggetto
@@ -57,6 +81,8 @@ function App() {
 
       //reset dell'input
       setNewTitle('')
+
+      console.log(uploadTitles);
 
     }
 
@@ -70,8 +96,11 @@ function App() {
     //prendo l'array originale e faccio un filter, recupero i valori del singolo oggetto e del suo index
     //restituisco tutto ciò che ha index diverso dal suo stesso id
     //se Index = 1 e id = 1, restituisco tutto ciò che non soddisfa questa condizione
-    const filteredTitles = titles.filter((title, index) => index !== id)
-    setTitles(filteredTitles)
+    titles.length - 1
+    const uploadTitles = titles.filter((title, index) => index !== id)
+    setTitles(uploadTitles)
+    console.log(uploadTitles);
+
 
   }
 
