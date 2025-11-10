@@ -41,10 +41,24 @@ function App() {
   function handleSubmit(e) {
     e.preventDefault()
 
-    //nuovo array dove riprendo l'array di partenza e ci aggiungo alla fine il mio nuovo oggetto
-    const uploadTitles = [...titles, addTitle]
-    setTitles(uploadTitles)
+    //quando faccio submit e l'input è vuoto, faccio comparire un alert e resetto il campo
+    if (newTitle.length === 0) {
 
+      alert('Il campo è vuoto')
+      setNewTitle('')
+
+    } else {
+
+      //altrimenti svolgo tutta la mia funzione
+
+      //nuovo array dove riprendo l'array di partenza e ci aggiungo alla fine il mio nuovo oggetto
+      const uploadTitles = [...titles, addTitle]
+      setTitles(uploadTitles)
+
+      //reset dell'input
+      setNewTitle('')
+
+    }
 
   }
 
