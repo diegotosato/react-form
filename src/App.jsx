@@ -16,46 +16,28 @@ function App() {
   Impostare il lavoro su più componenti.
   */
 
-  let counter = 0
-  let string = ["Benvenuto", "Novità Settimana", "Guide React", "Trucchi CSS"]
-
-  const emptyArray = []
-
-
-  for (let i = 0; i < string.length; i++) {
-    let object = {
-      id: counter++,
-      title: string[i]
-    }
-    emptyArray.push(object)
-  }
 
 
 
-
-
-
-
-
-
-
-  // //array degli articoli
-  // const initialTitles = [
-  //   { id: 1, title: "Benvenuto" },
-  //   { id: 2, title: "Novità Settimana" },
-  //   { id: 3, title: "Guide React" },
-  //   { id: 4, title: "Trucchi CSS" }
-  // ]
+  //array degli articoli
+  const initialTitles = [
+    { id: 1, title: "Benvenuto" },
+    { id: 2, title: "Novità Settimana" },
+    { id: 3, title: "Guide React" },
+    { id: 4, title: "Trucchi CSS" }
+  ]
 
   //destrutturizzazione dell'array per interagire dinamicamente per creare la lista
-  const [titles, setTitles] = useState(emptyArray)
+  const [titles, setTitles] = useState(initialTitles)
 
   //array vuoto per immagazzinare il nuovo titolo che inserisce l'utente
   const [newTitle, setNewTitle] = useState('')
 
+
+
   //variabile per trasformare l'input in un oggetto
   let addTitle = {
-    id: titles.length + 1,
+    id: titles[titles.length - 1].id + 1,
     title: newTitle
   }
 
@@ -96,11 +78,8 @@ function App() {
     //prendo l'array originale e faccio un filter, recupero i valori del singolo oggetto e del suo index
     //restituisco tutto ciò che ha index diverso dal suo stesso id
     //se Index = 1 e id = 1, restituisco tutto ciò che non soddisfa questa condizione
-    titles.length - 1
     const uploadTitles = titles.filter((title, index) => index !== id)
     setTitles(uploadTitles)
-    console.log(uploadTitles);
-
 
   }
 
