@@ -1,23 +1,21 @@
 import { useState } from "react"
 import ListItem from "./components/ListItem"
 
+/*
+Creare una pagina che visualizzi una lista di articoli, mostrandone solo il titolo (per la lista usate un array di oggetti).
+
+Milestone 2
+Aggiungiamo in pagina un semplice form con un campo input in cui inserire il titolo di un nuovo articolo del blog.
+Al submit del form, mostrare la lista degli articoli aggiornati.
+
+BONUS
+
+Aggiungere la possibilità di cancellare ciascun articolo utilizzando un'icona.
+Implementare la funzionalità di modifica del titolo di un post.
+Impostare il lavoro su più componenti.
+*/
+
 function App() {
-
-  /*
-  Creare una pagina che visualizzi una lista di articoli, mostrandone solo il titolo (per la lista usate un array di oggetti).
-
-  Milestone 2
-  Aggiungiamo in pagina un semplice form con un campo input in cui inserire il titolo di un nuovo articolo del blog.
-  Al submit del form, mostrare la lista degli articoli aggiornati.
-
-  BONUS
-
-  Aggiungere la possibilità di cancellare ciascun articolo utilizzando un'icona.
-  Implementare la funzionalità di modifica del titolo di un post.
-  Impostare il lavoro su più componenti.
-  */
-
-
 
 
   //array degli articoli
@@ -37,12 +35,6 @@ function App() {
   //variabile error per far comparire un messaggio quando la lista è vuota
   const [error, setError] = useState(null)
 
-
-
-
-
-
-
   //funzione per gestire il submite al form
   function handleSubmit(e) {
     e.preventDefault()
@@ -55,7 +47,6 @@ function App() {
 
     } else {
       //altrimenti svolgo tutta la mia funzione
-
 
       //variabile per trasformare l'input in un oggetto
       let addTitle = {
@@ -71,29 +62,18 @@ function App() {
       setNewTitle('')
 
       console.log(uploadTitles);
-
     }
-
   }
-
 
   //funzione per rimuovere la riga
   function handleTrash(id) {
-
     //nuovo array dove vado a fare il filtraggio
     //prendo l'array originale e faccio un filter, recupero i valori del singolo oggetto e del suo index
     //restituisco tutto ciò che ha index diverso dal suo stesso id
     //se Index = 1 e id = 1, restituisco tutto ciò che non soddisfa questa condizione
     const uploadTitles = titles.filter((title, index) => index !== id)
     setTitles(uploadTitles)
-
-
-
   }
-
-
-
-
 
   return (
     <>
@@ -102,10 +82,6 @@ function App() {
 
         {/* Titolo della pagina */}
         <h1>Titoli degli articoli</h1>
-
-
-
-
 
         {/* campo Form per inserire un nuovo titolo */}
         <form onSubmit={handleSubmit}>
@@ -122,7 +98,6 @@ function App() {
           }
 
         </form>
-
 
         {
           titles.length > 0 &&
@@ -142,9 +117,6 @@ function App() {
             </ul>
           </div>
         }
-
-
-
 
         {
           titles.length === 0 && <div className="mt-3">Nothing to do today</div>
